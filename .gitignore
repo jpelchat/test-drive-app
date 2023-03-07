@@ -1,15 +1,35 @@
-*.pyc
-*.DS_Store
-*.egg*
-/dist/
-/.idea
-/docs/_build/
-/node_modules/
-build/
+# byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# tests and coverage
+*.pytest_cache
+.coverage
+
+# database & logs
+*.db
+*.sqlite3
+*.log
+
+# venv
 env
-/staticfiles/
+venv
 
-#src
-*.sqlite*
+# other
+.DS_Store
 
-.env
+# sphinx docs 
+_build
+_static
+_templates
+
+# javascript
+package-lock.json
+.vscode/symbols.json
+
+apps/static/assets/node_modules
+apps/static/assets/yarn.lock
+apps/static/assets/.temp
+
+.env__
+
