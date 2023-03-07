@@ -13,7 +13,7 @@ from jinja2 import TemplateNotFound
 def index():
     return render_template('pages/index.html', segment='index')
 
-@blueprint.route('/result')
+@blueprint.route('/result', methods=['GET', 'POST'])
 def result():
     return render_template('result.html')
 
