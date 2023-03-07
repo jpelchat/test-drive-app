@@ -8,9 +8,14 @@ from flask import render_template, request
 from flask_login import login_required
 from jinja2 import TemplateNotFound
 
+
 @blueprint.route('/index')
 def index():
     return render_template('pages/index.html', segment='index')
+
+@blueprint.route('/result')
+def result():
+    return render_template('result.html')
 
 @blueprint.route('/typography')
 def typography():
