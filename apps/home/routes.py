@@ -29,14 +29,9 @@ def success():
 
 @blueprint.route('/result', methods=['GET'])
 def result():
-    data = request.args.get('btnradio', default="basic")
-    print(data)
-    if 'advanced' in data:
-        if not os.path.exists('success.file'):
-            os.mknod('success.file')
-        return render_template('pages/success.html', segment='index')
-    else:
-        return render_template('pages/index.html', segment='index')
+    if not os.path.exists('success.file'):
+        os.mknod('success.file')
+    return render_template('pages/success.html', segment='index')
 
 @blueprint.route('/typography')
 def typography():
