@@ -7,15 +7,28 @@ from apps.home import blueprint
 from flask import render_template, request
 from flask_login import login_required
 from jinja2 import TemplateNotFound
+import sys
+import sqlite3
 
+def get_db_connection():
+    conn = sqlite3.connect('database.db')
+    conn.row_factory = sqlite3.Row
+    return conn
 
 @blueprint.route('/index')
 def index():
     return render_template('pages/index.html', segment='index')
 
-@blueprint.route('/result', methods=['GET', 'POST'])
+@blueprint.route('/result')
 def result():
-    return render_template('result.html')
+    return 'hello world'
+
+@blueprint.route('/test')
+def test():
+    conn = get_db_connection()
+    posts = conn.execute('SELECT * FROM posts').fetchall()
+    conn.close()
+    return posts
 
 @blueprint.route('/typography')
 def typography():
