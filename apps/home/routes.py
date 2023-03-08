@@ -8,7 +8,7 @@ from flask import render_template, request
 from flask_login import login_required
 from jinja2 import TemplateNotFound
 import sys
-import sqlite3
+import os
 
 def get_db_connection():
     conn = sqlite3.connect('database.db')
@@ -19,16 +19,24 @@ def get_db_connection():
 def index():
     return render_template('pages/index.html', segment='index')
 
-@blueprint.route('/result')
-def result():
-    return 'hello world'
+@blueprint.route('/fakeindex')
+def fakeindex():
+    return render_template('pages/fakeindex.html', segment='index')
 
-@blueprint.route('/test')
-def test():
-    conn = get_db_connection()
-    posts = conn.execute('SELECT * FROM posts').fetchall()
-    conn.close()
-    return posts
+@blueprint.route('/success', methods=['GET'])
+def success():
+     return render_template('pages/success.html', segment='index')
+
+@blueprint.route('/result', methods=['GET'])
+def result():
+    data = request.args.get('btnradio', default="basic")
+    print(data)
+    if 'advanced' in data:
+        if not os.path.exists('success.file'):
+            os.mknod('success.file')
+        return render_template('pages/success.html', segment='index')
+    else:
+        return render_template('pages/index.html', segment='index')
 
 @blueprint.route('/typography')
 def typography():
