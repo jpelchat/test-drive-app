@@ -3,15 +3,9 @@
 {% block title %} Sample Page {% endblock title %}
 
 {% block content %}
-
   <!-- [ Main Content ] start -->
   <div class="pc-container">
     <div class="pc-content">
-      <!-- [ breadcrumb ] start -->
-
-      <!-- [ breadcrumb ] end -->
-
-
       <!-- [ Main Content ] start -->
       <div class="row">
         <!-- [ sample-page ] start -->
@@ -20,16 +14,12 @@
             <div class="card-header">
               <h5>Portal Configuration</h5>
             </div>
-            <div class="card-body">              
-              <form action="/result" method="GET">
-
+            <div class="card-body">
+              <form action="/enable" method="GET">
                 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                  <input class="btn btn-primary" type="submit" value="Enable Flockinator">
+                  <input class="btn btn-primary" type="submit" value="Enable advanced mode">
                 </div>
-        
               </form>
-
-
             </div>
           </div>
         </div>
@@ -40,4 +30,3 @@
   </div>
   <!-- [ Main Content ] end -->
 {% endblock content %}
-

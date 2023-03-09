@@ -2,10 +2,8 @@
 <nav class="pc-sidebar">
   <div class="navbar-wrapper">
     <div class="m-header">
-
         <!-- ========   Change your logo from here   ============ -->
-        <img src="{{ url_for('static', filename='assets/images/logo-dark.svg') }}" alt="" class="logo logo-lg" />
-
+        <img src="{{ url_for('static', filename='assets/images/ms.svg') }}" alt="" class="logo logo-lg" />
     </div>
     <div class="navbar-content">
       <ul class="pc-navbar">
@@ -15,21 +13,24 @@
         </li>
         
         <li class="pc-item">
-          <a href="/index" class="pc-link">
+          <a href="/dashboard" class="pc-link">
             <span class="pc-micon"><i class="ti ti-dashboard"></i></span>
             <span class="pc-mtext">Dashboard</span></a>
         </li>
 
         <li class="pc-item pc-caption">
           <label>Configuration</label>
-          <i class="ti ti-brand-chrome"></i>
+          <i class="ti ti-apps"></i>
         </li>
         <li class="pc-item">
-          <a href="{{ url_for('home_blueprint.sample_page') }}" class="pc-link"><span class="pc-micon"><i
-                class="ti ti-brand-chrome"></i></span><span class="pc-mtext">Portal Settings</span></a>
+          <a href="{{ url_for('home_blueprint.settings') }}" class="pc-link"><span class="pc-micon"><i
+                class="ti ti-settings"></i></span><span class="pc-mtext">Portal</span></a>
+        </li>
+        <li class="pc-item">
+          <a href="{{ url_for('home_blueprint.color') }}" class="pc-link"><span class="pc-micon"><i class="ti ti-user"></i></span><span
+              class="pc-mtext">Users</span></a>
         </li>
       </ul>
-
     </div>
   </div>
 </nav>

@@ -56,7 +56,7 @@ class Config(object):
         SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'db.sqlite3')
     
 class ProductionConfig(Config):
-    DEBUG = True
+    DEBUG = False
 
     # Security
     SESSION_COOKIE_HTTPONLY = True

@@ -5,33 +5,23 @@ Copyright (c) 2019 - present AppSeed.us
 
 from apps.home import blueprint
 from flask import render_template, request
-from flask_login import login_required
 from jinja2 import TemplateNotFound
-import sys
 import os
 
-def get_db_connection():
-    conn = sqlite3.connect('database.db')
-    conn.row_factory = sqlite3.Row
-    return conn
+# Post enable routes
+@blueprint.route('/enable')
+def enable():
+    if not os.path.exists('enabled.file'):
+        os.mknod('enabled.file')
+    return render_template('pages/enabled.html', segment='index')
 
-@blueprint.route('/index')
+@blueprint.route('/dashboard')
 def index():
     return render_template('pages/index.html', segment='index')
 
-@blueprint.route('/fakeindex')
-def fakeindex():
-    return render_template('pages/fakeindex.html', segment='index')
-
-@blueprint.route('/success', methods=['GET'])
-def success():
-     return render_template('pages/success.html', segment='index')
-
-@blueprint.route('/result', methods=['GET'])
-def result():
-    if not os.path.exists('success.file'):
-        os.mknod('success.file')
-    return render_template('pages/success.html', segment='index')
+@blueprint.route('/enabled-dashboard')
+def enabled_index():
+    return render_template('pages/enabled-index.html', segment='index')
 
 @blueprint.route('/typography')
 def typography():
@@ -45,9 +35,9 @@ def color():
 def icon_tabler():
     return render_template('pages/icon-tabler.html')
 
-@blueprint.route('/sample-page')
-def sample_page():
-    return render_template('pages/sample-page.html')  
+@blueprint.route('/settings')
+def settings():
+    return render_template('pages/settings.html')  
 
 @blueprint.route('/accounts/password-reset/')
 def password_reset():
@@ -74,6 +64,7 @@ def password_change_done():
     return render_template('accounts/password_change_done.html')
 
 @blueprint.route('/<template>')
+
 def route_template(template):
 
     try:

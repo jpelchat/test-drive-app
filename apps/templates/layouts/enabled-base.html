@@ -18,12 +18,14 @@
 
 </head>
 <body>
+  {% block loader %}
+    {% include 'includes/loader.html' %}
+  {% endblock loader %}
   {% block header %}
-    {% include 'includes/fakenavigation.html' %}
+    {% include 'includes/enabled-navigation.html' %}
   {% endblock header %}
-  
   {% block sidebar %}
-    {% include 'includes/fakesidebar.html' %}
+    {% include 'includes/enabled-sidebar.html' %}
   {% endblock sidebar %}
 
   {% block content %}{% endblock content %}
